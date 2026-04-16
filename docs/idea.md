@@ -2,30 +2,30 @@
 
 ## Descripción general
 
-TransitFlow es una aplicación web diseñada para consultar de forma rápida y sencilla los tiempos estimados de llegada y salida de diferentes medios de transporte: autobuses, trenes y vuelos. La aplicación centraliza la información en un único lugar, permitiendo al usuario visualizar el estado del transporte, posibles retrasos y detalles relevantes como el andén o la puerta de embarque cuando esté disponible.
+TransitFlow es una aplicación web que quiero crear para consultar de forma rápida y sencilla los tiempos estimados de llegada y salida de diferentes medios de transporte: autobuses, trenes y vuelos. Mi idea es centralizar la información en un único lugar para visualizar el estado del transporte, posibles retrasos y detalles relevantes como el andén o la puerta de embarque cuando esté disponible.
 
-El objetivo principal es mejorar la experiencia del usuario a la hora de planificar sus desplazamientos, evitando tener que consultar múltiples aplicaciones o páginas web.
+Mi objetivo principal es mejorar la experiencia al planificar desplazamientos, evitando tener que consultar múltiples aplicaciones o páginas web.
 
 ---
 
 ## Problema que intenta resolver
 
-Actualmente, los usuarios que utilizan distintos medios de transporte (como autobuses, trenes o aviones) suelen tener que consultar varias plataformas para obtener información actualizada sobre horarios, retrasos o incidencias. Esto provoca pérdida de tiempo, desorganización y una experiencia poco eficiente.
+Cuando viajo, muchas veces me cuesta encontrar información clara y rápida sobre mis trayectos. Por ejemplo, en estaciones o aeropuertos no siempre encuentro fácilmente la puerta de embarque o no sé si ha cambiado. También, cuando uso autobús, me cuesta saber con precisión cuánto tiempo falta para que llegue.
 
-TransitFlow busca solucionar este problema unificando toda esta información en una sola aplicación, ofreciendo una visión clara, rápida y accesible del estado de los trayectos.
+Para resolverlo suelo tener que consultar varias plataformas distintas, lo que me hace perder tiempo y genera desorganización. Con TransitFlow quiero unificar toda esta información en una sola aplicación, con una visión clara, rápida y accesible del estado de cada trayecto.
 
 ---
 
 ## Usuario objetivo
 
-Esta aplicación está pensada para:
+Aunque nace de una necesidad personal, creo que esta aplicación también está pensada para:
 
 * Personas que utilizan transporte público de forma habitual
 * Estudiantes que se desplazan diariamente
 * Trabajadores que dependen de horarios de transporte
 * Viajeros que necesitan consultar información de vuelos o trayectos
 
-En general, cualquier usuario que quiera organizar mejor sus desplazamientos y ahorrar tiempo.
+En general, cualquier persona que quiera organizar mejor sus desplazamientos y ahorrar tiempo.
 
 ---
 
@@ -78,6 +78,6 @@ El objetivo es simular el funcionamiento de una aplicación real, aplicando buen
 
 ## Conclusión
 
-TransitFlow es una aplicación pensada para mejorar la organización y planificación de los desplazamientos del usuario. A pesar de ser una versión simplificada, el proyecto permite aplicar conceptos clave del desarrollo web moderno, como el uso de APIs, gestión de estado, componentes reutilizables y arquitectura por capas.
+TransitFlow es una aplicación que quiero desarrollar para mejorar la organización y planificación de desplazamientos en el día a día. Aunque empiece como una versión simplificada, el proyecto me permite aplicar conceptos clave del desarrollo web moderno, como el uso de APIs, gestión de estado, componentes reutilizables y arquitectura por capas.
 
-Además, el proyecto tiene potencial de crecimiento futuro, pudiendo evolucionar hacia una aplicación real con datos en tiempo real y funcionalidades más avanzadas.
+Además, veo un potencial claro de crecimiento para evolucionar esta idea hacia una aplicación real con datos en tiempo real y funcionalidades más avanzadas.

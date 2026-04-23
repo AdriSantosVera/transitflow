@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
+import ThemeToggle from './components/ThemeToggle'
 import BudgetPage from './pages/BudgetPage'
 import HomePage from './pages/HomePage'
 import ItineraryPage from './pages/ItineraryPage'
@@ -15,10 +16,13 @@ import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
-    <div className="min-h-screen bg-transparent text-slate-900 lg:flex">
+    <div className="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-[#0f172a] dark:text-white lg:flex">
       <Header />
       <div className="min-w-0 flex-1">
         <main className="mx-auto w-full max-w-[1720px] px-4 py-6 lg:px-8 lg:py-8 xl:px-10">
+          <div className="mb-6 hidden justify-end lg:flex">
+            <ThemeToggle />
+          </div>
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<HomePage />} />

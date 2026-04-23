@@ -127,28 +127,28 @@ function HomePage() {
 
   return (
     <section className="space-y-6">
-      <div className="flex flex-col gap-4 rounded-[32px] border border-white/70 bg-white/68 p-6 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.22)] backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 rounded-[32px] border border-white/70 bg-white/68 p-6 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.22)] backdrop-blur-xl transition-colors duration-300 dark:border-slate-700/80 dark:bg-slate-800/88 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-medium text-slate-500">Lunes, 21 de abril</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Lunes, 21 de abril</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
             ¡Hola, Adrián! 👋
           </h2>
-          <p className="mt-2 max-w-2xl text-slate-500">
+          <p className="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">
             Aqui tienes una vista premium de tus viajes, presupuesto, ahorro y lugares clave.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+          <button className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
             <Bell className="h-5 w-5" />
           </button>
-          <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 shadow-sm">
+          <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-semibold text-white">
               A
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-950">Adrian</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Perfil</p>
+              <p className="text-sm font-semibold text-slate-950 dark:text-white">Adrian</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Perfil</p>
             </div>
           </div>
         </div>
@@ -186,7 +186,7 @@ function HomePage() {
       </div>
 
       {dashboardError ? (
-        <section className="soft-panel border-red-100 bg-red-50/80 p-6">
+        <section className="soft-panel border-red-100 bg-red-50/80 p-6 dark:border-red-500/20 dark:bg-red-950/30">
           <h3 className="text-lg font-semibold text-red-900">No se pudo cargar el resumen</h3>
           <p className="mt-2 text-sm text-red-700">{dashboardError}</p>
         </section>
@@ -197,21 +197,21 @@ function HomePage() {
           <section id="viajes" className="soft-panel p-6">
             <div className="mb-5 flex items-center justify-between gap-4">
               <div>
-                <h3 className="text-2xl font-semibold text-slate-950">Mis viajes</h3>
-                <p className="mt-1 text-sm text-slate-400">
+                <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Mis viajes</h3>
+                <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
                   Tarjetas visuales con presupuesto, progreso y detalles clave
                 </p>
               </div>
               <Link
                 to="/trips"
-                className="rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white shadow-[0_18px_32px_-16px_rgba(15,23,42,0.6)] transition-all duration-300 hover:-translate-y-0.5"
+                className="rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white shadow-[0_18px_32px_-16px_rgba(15,23,42,0.6)] transition-all duration-300 hover:-translate-y-0.5 dark:bg-indigo-500"
               >
                 Ver todos
               </Link>
             </div>
 
             {loading ? (
-              <p className="text-slate-500">Cargando viajes...</p>
+              <p className="text-slate-500 dark:text-slate-400">Cargando viajes...</p>
             ) : error ? (
               <p className="text-red-600">Error al cargar viajes: {error}</p>
             ) : trips.length === 0 ? (

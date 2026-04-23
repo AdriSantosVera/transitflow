@@ -7,10 +7,12 @@
     "dev": "vite",
     "server:dev": "tsx server/src/index.ts",
     "build": "tsc -b && vite build",
+    "postinstall": "prisma generate",
     "lint": "eslint .",
     "preview": "vite preview",
     "prisma:generate": "prisma generate",
-    "prisma:push": "prisma db push"
+    "prisma:push": "prisma db push",
+    "prisma:seed": "tsx server/src/lib/run-seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",

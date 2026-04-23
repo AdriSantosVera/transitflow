@@ -1,6 +1,6 @@
 # TransitFlow
 
-TransitFlow es una aplicacion web de planificacion de viajes con dashboard visual, detalle de viaje y backend persistente con Prisma + SQLite.
+TransitFlow es una aplicacion web de planificacion de viajes con dashboard visual, detalle de viaje y backend persistente con Prisma + PostgreSQL.
 
 ## Objetivo
 
@@ -22,7 +22,7 @@ La idea es sustituir notas dispersas y calculos sueltos por una herramienta unic
 - Routing: React Router
 - Backend: Node.js + Express
 - ORM: Prisma
-- Base de datos: SQLite
+- Base de datos: PostgreSQL
 - Documentacion de API: Swagger
 
 ## Funcionalidades implementadas
@@ -37,7 +37,7 @@ La idea es sustituir notas dispersas y calculos sueltos por una herramienta unic
 - CRUD de notas
 - Favoritos
 - Paginas globales de viajes, lugares, presupuesto, ahorro, favoritos, notas y ajustes
-- Persistencia real en backend con Prisma + SQLite
+- Persistencia real en backend con Prisma + PostgreSQL
 - Documentacion de API con Swagger
 
 ## Estructura principal
@@ -61,6 +61,7 @@ La idea es sustituir notas dispersas y calculos sueltos por una herramienta unic
 npm install
 npx prisma generate
 npx prisma db push
+npm run prisma:seed
 ```
 
 ## Variables de entorno
@@ -69,7 +70,8 @@ Crea `.env` o `.env.local` con:
 
 ```env
 PORT=3001
-DATABASE_URL="file:./dev.db"
+DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@[YOUR-PROJECT-REF].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
+DIRECT_URL="postgresql://postgres:[YOUR-PROJECT-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres"
 ```
 
 ## Scripts
@@ -82,6 +84,7 @@ npm run build
 npm run preview
 npx prisma generate
 npx prisma db push
+npm run prisma:seed
 ```
 
 ## Arranque local
@@ -96,6 +99,12 @@ Terminal 2:
 
 ```bash
 npm run dev
+```
+
+Si quieres poblar la base con los datos iniciales despues del `db push`:
+
+```bash
+npm run prisma:seed
 ```
 
 ## URLs utiles
@@ -166,8 +175,7 @@ Base path: `/api/v1`
 ## Limitaciones actuales
 
 - no hay autenticacion de usuarios
-- SQLite se usa como base local simple para desarrollo y entrega
-- no hay despliegue productivo completamente cerrado en esta fase
+- no hay despliegue productivo completamente cerrado hasta configurar una base PostgreSQL remota en Vercel
 - el bundle del frontend aun puede optimizarse con code splitting
 
 ## Mejoras futuras

@@ -5,7 +5,7 @@ import {
   getTripByIdController,
   getTripsController,
   updateTripController,
-} from '../controllers/trips.controller'
+} from '../controllers/trips.controller.js'
 
 const tripsRouter = Router()
 

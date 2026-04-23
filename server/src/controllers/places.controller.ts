@@ -1,11 +1,11 @@
 import type { Request, Response } from 'express'
-import { handleControllerError } from '../lib/http'
+import { handleControllerError } from '../lib/http.js'
 import {
   createPlace,
   deletePlace,
   getPlaces,
   updatePlace,
-} from '../services/places.service'
+} from '../services/places.service.js'
 
 export async function getPlacesController(req: Request, res: Response) {
   const tripId = typeof req.query.tripId === 'string' ? req.query.tripId : undefined

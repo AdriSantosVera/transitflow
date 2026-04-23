@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
-import { expensesData, notesData, placesData, savingsData, tripsData } from '../data/trips.data'
-import { prisma } from './prisma'
+import { expensesData, notesData, placesData, savingsData, tripsData } from '../data/trips.data.js'
+import { prisma } from './prisma.js'
 
 let seedPromise: Promise<void> | null = null
 

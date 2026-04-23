@@ -1,4 +1,4 @@
-import { ensureDatabaseSeeded } from './seed'
+import { ensureDatabaseSeeded } from './seed.js'
 
 let bootstrapPromise: Promise<void> | null = null
 

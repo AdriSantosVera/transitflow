@@ -1,11 +1,11 @@
 import type { Request, Response } from 'express'
-import { handleControllerError } from '../lib/http'
+import { handleControllerError } from '../lib/http.js'
 import {
   createExpense,
   deleteExpense,
   getExpenses,
   updateExpense,
-} from '../services/expenses.service'
+} from '../services/expenses.service.js'
 
 export async function getExpensesController(req: Request, res: Response) {
   const tripId = typeof req.query.tripId === 'string' ? req.query.tripId : undefined

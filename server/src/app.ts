@@ -1,13 +1,13 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
-import { swaggerSpec } from './docs/openapi'
-import healthRouter from './routes/health.routes'
-import favoritesRouter from './routes/favorites.routes'
-import tripsRouter from './routes/trips.routes'
-import placesRouter from './routes/places.routes'
-import expensesRouter from './routes/expenses.routes'
-import savingsRouter from './routes/savings.routes'
-import notesRouter from './routes/notes.routes'
+import { swaggerSpec } from './docs/openapi.js'
+import healthRouter from './routes/health.routes.js'
+import favoritesRouter from './routes/favorites.routes.js'
+import tripsRouter from './routes/trips.routes.js'
+import placesRouter from './routes/places.routes.js'
+import expensesRouter from './routes/expenses.routes.js'
+import savingsRouter from './routes/savings.routes.js'
+import notesRouter from './routes/notes.routes.js'
 
 const app = express()
 

@@ -1,10 +1,10 @@
 import type { Request, Response } from 'express'
-import { handleControllerError } from '../lib/http'
+import { handleControllerError } from '../lib/http.js'
 import {
   addFavorite,
   getAllFavorites,
   removeFavorite,
-} from '../services/favorites.service'
+} from '../services/favorites.service.js'
 
 export async function getFavoritesController(_req: Request, res: Response) {
   res.json(await getAllFavorites())

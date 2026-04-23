@@ -4,7 +4,7 @@ import {
   deletePlaceController,
   getPlacesController,
   updatePlaceController,
-} from '../controllers/places.controller'
+} from '../controllers/places.controller.js'
 
 const placesRouter = Router()
 

@@ -1,5 +1,5 @@
-import { prisma } from '../lib/prisma'
-import { NotFoundError } from '../lib/validation'
+import { prisma } from '../lib/prisma.js'
+import { NotFoundError } from '../lib/validation.js'
 
 export async function ensureTripExists(tripId: string) {
   const trip = await prisma.trip.findUnique({

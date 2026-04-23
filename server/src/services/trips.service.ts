@@ -1,11 +1,11 @@
-import { prisma } from '../lib/prisma'
+import { prisma } from '../lib/prisma.js'
 import {
   assertNonEmptyString,
   assertPositiveNumber,
   assertValidDateString,
   ValidationError,
-} from '../lib/validation'
-import type { Trip, TripWithMetrics } from '../types/trip.type'
+} from '../lib/validation.js'
+import type { Trip, TripWithMetrics } from '../types/trip.type.js'
 
 type CreateTripInput = Omit<Trip, 'id'>
 

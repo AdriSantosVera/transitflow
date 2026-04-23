@@ -4,7 +4,7 @@ import {
   deleteExpenseController,
   getExpensesController,
   updateExpenseController,
-} from '../controllers/expenses.controller'
+} from '../controllers/expenses.controller.js'
 
 const expensesRouter = Router()
 

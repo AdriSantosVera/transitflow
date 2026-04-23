@@ -1,3 +1,3 @@
-import handleAppRequest from '../_handler'
+import handleAppRequest from '../_handler.js'
 
 export default handleAppRequest

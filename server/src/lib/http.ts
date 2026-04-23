@@ -1,5 +1,5 @@
 import type { Response } from 'express'
-import { NotFoundError, ValidationError } from './validation'
+import { NotFoundError, ValidationError } from './validation.js'
 
 export function handleControllerError(res: Response, error: unknown) {
   if (error instanceof ValidationError) {

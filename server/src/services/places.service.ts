@@ -1,7 +1,7 @@
-import { prisma } from '../lib/prisma'
-import { assertNonEmptyString } from '../lib/validation'
-import { ensureTripExists } from './trip-reference.service'
-import type { Place } from '../types/trip.type'
+import { prisma } from '../lib/prisma.js'
+import { assertNonEmptyString } from '../lib/validation.js'
+import { ensureTripExists } from './trip-reference.service.js'
+import type { Place } from '../types/trip.type.js'
 
 type CreatePlaceInput = Omit<Place, 'id'>
 

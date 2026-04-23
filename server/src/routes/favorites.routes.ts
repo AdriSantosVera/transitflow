@@ -3,7 +3,7 @@ import {
   addFavoriteController,
   getFavoritesController,
   removeFavoriteController,
-} from '../controllers/favorites.controller'
+} from '../controllers/favorites.controller.js'
 
 const favoritesRouter = Router()
 

@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
-import { handleControllerError } from '../lib/http'
-import { createNote, deleteNote, getNotes, updateNote } from '../services/notes.service'
+import { handleControllerError } from '../lib/http.js'
+import { createNote, deleteNote, getNotes, updateNote } from '../services/notes.service.js'
 
 export async function getNotesController(req: Request, res: Response) {
   const tripId = typeof req.query.tripId === 'string' ? req.query.tripId : undefined

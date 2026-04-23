@@ -1,7 +1,7 @@
-import { prisma } from '../lib/prisma'
-import { assertNonEmptyString, assertPositiveNumber, assertValidDateString } from '../lib/validation'
-import { ensureTripExists } from './trip-reference.service'
-import type { Saving } from '../types/trip.type'
+import { prisma } from '../lib/prisma.js'
+import { assertNonEmptyString, assertPositiveNumber, assertValidDateString } from '../lib/validation.js'
+import { ensureTripExists } from './trip-reference.service.js'
+import type { Saving } from '../types/trip.type.js'
 
 type CreateSavingInput = Omit<Saving, 'id'>
 

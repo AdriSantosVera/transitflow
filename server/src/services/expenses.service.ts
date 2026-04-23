@@ -1,7 +1,7 @@
-import { prisma } from '../lib/prisma'
-import { assertNonEmptyString, assertPositiveNumber, assertValidExpenseType } from '../lib/validation'
-import { ensureTripExists } from './trip-reference.service'
-import type { Expense } from '../types/trip.type'
+import { prisma } from '../lib/prisma.js'
+import { assertNonEmptyString, assertPositiveNumber, assertValidExpenseType } from '../lib/validation.js'
+import { ensureTripExists } from './trip-reference.service.js'
+import type { Expense } from '../types/trip.type.js'
 
 type CreateExpenseInput = Omit<Expense, 'id'>
 

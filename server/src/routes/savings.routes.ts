@@ -4,7 +4,7 @@ import {
   deleteSavingController,
   getSavingsController,
   updateSavingController,
-} from '../controllers/savings.controller'
+} from '../controllers/savings.controller.js'
 
 const savingsRouter = Router()
 

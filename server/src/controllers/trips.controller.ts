@@ -1,12 +1,12 @@
 import type { Request, Response } from 'express'
-import { handleControllerError } from '../lib/http'
+import { handleControllerError } from '../lib/http.js'
 import {
   createTrip,
   deleteTrip,
   getTripById,
   getTrips,
   updateTrip,
-} from '../services/trips.service'
+} from '../services/trips.service.js'
 
 export async function getTripsController(_req: Request, res: Response) {
   return res.json(await getTrips())

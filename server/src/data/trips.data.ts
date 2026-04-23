@@ -1,4 +1,4 @@
-import type { Expense, Note, Place, Saving, Trip } from '../types/trip.type'
+import type { Expense, Note, Place, Saving, Trip } from '../types/trip.type.js'
 
 export const tripsData: Trip[] = [
   {

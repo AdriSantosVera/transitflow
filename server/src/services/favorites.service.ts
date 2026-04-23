@@ -1,6 +1,6 @@
-import { prisma } from '../lib/prisma'
-import { assertNonEmptyString } from '../lib/validation'
-import { ensureTripExists } from './trip-reference.service'
+import { prisma } from '../lib/prisma.js'
+import { assertNonEmptyString } from '../lib/validation.js'
+import { ensureTripExists } from './trip-reference.service.js'
 
 export async function getAllFavorites(): Promise<string[]> {
   const favorites = await prisma.favorite.findMany({

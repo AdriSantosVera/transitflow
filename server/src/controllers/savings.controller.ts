@@ -1,11 +1,11 @@
 import type { Request, Response } from 'express'
-import { handleControllerError } from '../lib/http'
+import { handleControllerError } from '../lib/http.js'
 import {
   createSaving,
   deleteSaving,
   getSavings,
   updateSaving,
-} from '../services/savings.service'
+} from '../services/savings.service.js'
 
 export async function getSavingsController(req: Request, res: Response) {
   const tripId = typeof req.query.tripId === 'string' ? req.query.tripId : undefined

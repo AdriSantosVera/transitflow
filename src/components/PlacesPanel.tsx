@@ -24,21 +24,21 @@ function PlacesPanel({
     <section id="lugares" className="soft-panel p-6">
       <div className="mb-5 flex items-center justify-between gap-4">
         <div>
-          <h3 className="text-2xl font-semibold text-slate-950">Lugares favoritos</h3>
-          <p className="mt-1 text-sm text-slate-400">
+          <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Lugares favoritos</h3>
+          <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
             Espacios destacados para cada viaje en curso
           </p>
         </div>
         {actionHref ? (
           <Link
             to={actionHref}
-            className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700"
+            className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300"
           >
             <Sparkles className="h-4 w-4" />
             {actionLabel}
           </Link>
         ) : (
-          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700">
+          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300">
             <Sparkles className="h-4 w-4" />
             Curado para ti
           </div>
@@ -49,17 +49,17 @@ function PlacesPanel({
         {visiblePlaces.map((place) => (
           <article
             key={place.id}
-            className="rounded-[24px] border border-slate-200/80 bg-white p-5 shadow-[0_14px_32px_-24px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-1"
+            className="rounded-[24px] border border-slate-200/80 bg-white p-5 shadow-[0_14px_32px_-24px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800/90 dark:shadow-[0_18px_38px_-24px_rgba(2,6,23,0.95)]"
           >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-sky-100 text-indigo-700">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-sky-100 text-indigo-700 dark:from-indigo-500/20 dark:to-sky-500/20 dark:text-indigo-300">
               <MapPin className="h-5 w-5" />
             </div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
               {place.category}
             </p>
-            <h4 className="mt-2 text-lg font-semibold text-slate-950">{place.name}</h4>
-            <p className="mt-2 text-sm text-slate-500">{place.notes}</p>
-            <div className="mt-4 rounded-2xl bg-slate-50 px-3 py-2 text-sm text-slate-600">
+            <h4 className="mt-2 text-lg font-semibold text-slate-950 dark:text-white">{place.name}</h4>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{place.notes}</p>
+            <div className="mt-4 rounded-2xl bg-slate-50 px-3 py-2 text-sm text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
               {tripsById.get(place.tripId)?.name ?? 'Viaje sin asignar'}
             </div>
           </article>

@@ -44,8 +44,8 @@ function ExpensesDonutChart({ values }: ExpensesDonutChartProps) {
   return (
     <section className="widget-card p-6">
       <div className="mb-4">
-        <h3 className="text-lg font-semibold text-slate-950">Gastos por categoria</h3>
-        <p className="mt-1 text-sm text-slate-400">Distribucion actual del presupuesto</p>
+        <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Gastos por categoria</h3>
+        <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">Distribucion actual del presupuesto</p>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[1fr_0.95fr] xl:grid-cols-1">
@@ -73,6 +73,7 @@ function ExpensesDonutChart({ values }: ExpensesDonutChartProps) {
                   borderRadius: '16px',
                   border: '1px solid rgba(226,232,240,0.9)',
                   boxShadow: '0 18px 32px -20px rgba(15,23,42,0.25)',
+                  backgroundColor: '#ffffff',
                 }}
               />
             </PieChart>
@@ -80,26 +81,26 @@ function ExpensesDonutChart({ values }: ExpensesDonutChartProps) {
         </div>
 
         <div className="space-y-3">
-          <div className="rounded-2xl bg-slate-50 px-4 py-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+          <div className="rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-900/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
               Total gastado
             </p>
-            <p className="mt-2 text-2xl font-semibold text-slate-950">{currency(total)}</p>
+            <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{currency(total)}</p>
           </div>
 
           {data.map((item) => (
             <div
               key={item.key}
-              className="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3"
+              className="flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800/60"
             >
               <div className="flex items-center gap-3">
                 <span
                   className="h-3 w-3 rounded-full"
                   style={{ backgroundColor: palette[item.key] }}
                 />
-                <span className="text-sm font-medium text-slate-600">{item.name}</span>
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-300">{item.name}</span>
               </div>
-              <span className="text-sm font-semibold text-slate-950">{currency(item.value)}</span>
+              <span className="text-sm font-semibold text-slate-950 dark:text-white">{currency(item.value)}</span>
             </div>
           ))}
         </div>

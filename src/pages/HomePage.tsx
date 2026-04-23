@@ -1,10 +1,4 @@
-import {
-  Bell,
-  Landmark,
-  MapPinned,
-  PiggyBank,
-  WalletCards,
-} from 'lucide-react'
+import { Landmark, MapPinned, PiggyBank, WalletCards } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import DashboardMetricCard from '../components/DashboardMetricCard'
 import EmptyState from '../components/EmptyState'
@@ -139,9 +133,6 @@ function HomePage() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-            <Bell className="h-5 w-5" />
-          </button>
           <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-semibold text-white">
               A

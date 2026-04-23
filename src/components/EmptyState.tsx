@@ -6,11 +6,11 @@ interface EmptyStateProps {
 function EmptyState({ title, description }: EmptyStateProps) {
   return (
     <section className="widget-card p-10 text-center">
-      <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-[20px] bg-gradient-to-br from-slate-100 to-indigo-50 text-lg font-semibold text-slate-500 shadow-inner">
+      <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-[20px] bg-gradient-to-br from-slate-100 to-indigo-50 text-lg font-semibold text-slate-500 shadow-inner dark:from-slate-800 dark:to-slate-700 dark:text-slate-300">
         ✦
       </div>
-      <h2 className="mb-2 text-2xl font-semibold tracking-tight text-slate-900">{title}</h2>
-      <p className="mx-auto max-w-xl text-slate-500">{description}</p>
+      <h2 className="mb-2 text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">{title}</h2>
+      <p className="mx-auto max-w-xl text-slate-500 dark:text-slate-400">{description}</p>
     </section>
   )
 }

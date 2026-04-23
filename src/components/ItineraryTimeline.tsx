@@ -29,11 +29,11 @@ function ItineraryTimeline({
     <section id="itinerario" className="soft-panel p-6">
       <div className="mb-5 flex items-center justify-between gap-4">
         <div>
-          <h3 className="text-2xl font-semibold text-slate-950">{title}</h3>
-          <p className="mt-1 text-sm text-slate-400">{subtitle}</p>
+          <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">{title}</h3>
+          <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">{subtitle}</p>
         </div>
         {actionHref ? (
-          <Link to={actionHref} className="text-sm font-medium text-indigo-600">
+          <Link to={actionHref} className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
             {actionLabel}
           </Link>
         ) : null}
@@ -44,7 +44,7 @@ function ItineraryTimeline({
           {items.map((item, index) => (
             <article
               key={item.id}
-              className="relative w-[240px] rounded-[28px] border border-slate-200/80 bg-white p-4 shadow-[0_14px_32px_-22px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-1"
+              className="relative w-[240px] rounded-[28px] border border-slate-200/80 bg-white p-4 shadow-[0_14px_32px_-22px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-800/90 dark:shadow-[0_18px_38px_-24px_rgba(2,6,23,0.95)]"
             >
               {index < items.length - 1 ? (
                 <span className="absolute top-11 left-[calc(100%-4px)] h-px w-6 bg-gradient-to-r from-indigo-200 to-transparent" />
@@ -59,12 +59,12 @@ function ItineraryTimeline({
                   className="h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
-                <div className="absolute right-3 bottom-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-900">
+                <div className="absolute right-3 bottom-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-900 dark:bg-slate-900/85 dark:text-white">
                   {item.dayLabel}
                 </div>
               </div>
-              <h4 className="text-lg font-semibold text-slate-950">{item.placeName}</h4>
-              <p className="mt-2 text-sm leading-6 text-slate-500">{item.description}</p>
+              <h4 className="text-lg font-semibold text-slate-950 dark:text-white">{item.placeName}</h4>
+              <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">{item.description}</p>
             </article>
           ))}
         </div>

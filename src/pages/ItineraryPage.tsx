@@ -60,7 +60,7 @@ function ItineraryPage() {
   }, [selectedTripId])
 
   if (loading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando itinerario...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando itinerario...</section>
   }
 
   if (error) {
@@ -68,7 +68,7 @@ function ItineraryPage() {
   }
 
   if (itineraryLoading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando itinerario...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando itinerario...</section>
   }
 
   if (itineraryError) {
@@ -81,14 +81,14 @@ function ItineraryPage() {
   return (
     <section className="space-y-6">
       <div className="soft-panel p-6">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Itinerario</h2>
-        <p className="mt-2 text-slate-500">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Itinerario</h2>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">
           Cambia de viaje y revisa la secuencia visual de dias y lugares.
         </p>
         <select
           value={selectedTripId}
           onChange={(event) => setSelectedTripId(event.target.value)}
-          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
         >
           {trips.map((trip) => (
             <option key={trip.id} value={trip.id}>

@@ -111,7 +111,7 @@ function EditTripModal({ isOpen, onClose, trip, onSubmit }: EditTripModalProps) 
             setFormData((current) => ({ ...current, name: event.target.value }))
           }
           placeholder="Nombre del viaje"
-          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
         />
         <input
           type="text"
@@ -121,7 +121,7 @@ function EditTripModal({ isOpen, onClose, trip, onSubmit }: EditTripModalProps) 
             setFormData((current) => ({ ...current, destination: event.target.value }))
           }
           placeholder="Destino"
-          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
         />
         <div className="grid gap-4 sm:grid-cols-2">
           <input
@@ -131,7 +131,7 @@ function EditTripModal({ isOpen, onClose, trip, onSubmit }: EditTripModalProps) 
             onChange={(event) =>
               setFormData((current) => ({ ...current, startDate: event.target.value }))
             }
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
           />
           <input
             type="date"
@@ -140,7 +140,7 @@ function EditTripModal({ isOpen, onClose, trip, onSubmit }: EditTripModalProps) 
             onChange={(event) =>
               setFormData((current) => ({ ...current, endDate: event.target.value }))
             }
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
           />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -154,7 +154,7 @@ function EditTripModal({ isOpen, onClose, trip, onSubmit }: EditTripModalProps) 
               setFormData((current) => ({ ...current, budget: event.target.value }))
             }
             placeholder="Presupuesto"
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
           />
           <input
             type="url"
@@ -163,15 +163,15 @@ function EditTripModal({ isOpen, onClose, trip, onSubmit }: EditTripModalProps) 
               setFormData((current) => ({ ...current, image: event.target.value }))
             }
             placeholder="Imagen opcional"
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
-          />
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
+        />
         </div>
         {error ? <p className="text-sm text-red-600">{error}</p> : null}
         <div className="flex justify-end gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700"
+            className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 dark:border-slate-700 dark:text-slate-300"
           >
             Cancelar
           </button>

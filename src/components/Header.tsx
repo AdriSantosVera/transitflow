@@ -1,6 +1,5 @@
 import { Bookmark, Compass, CreditCard, LayoutDashboard, MapPinned, NotebookPen, Settings, Sparkles, Wallet } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
 
 type NavItem = {
   label: string
@@ -123,7 +122,6 @@ function Header() {
               <h1 className="text-base font-semibold text-slate-950 dark:text-white">TransitFlow</h1>
             </div>
           </div>
-          <ThemeToggle compact />
         </div>
         <div className="mb-4 rounded-[24px] bg-gradient-to-r from-indigo-500 to-violet-500 p-4 text-white shadow-[0_20px_40px_-20px_rgba(99,102,241,0.85)]">
           <p className="text-xs uppercase tracking-[0.2em] text-indigo-100">Accion rapida</p>

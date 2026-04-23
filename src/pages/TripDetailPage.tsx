@@ -358,7 +358,7 @@ function TripDetailPage() {
   if (loading) {
     return (
       <section className="soft-panel p-6">
-        <p className="text-slate-500">Cargando detalle del viaje...</p>
+        <p className="text-slate-500 dark:text-slate-400">Cargando detalle del viaje...</p>
       </section>
     )
   }
@@ -374,7 +374,7 @@ function TripDetailPage() {
 
   return (
     <section className="space-y-6">
-      <div className="overflow-hidden rounded-[32px] border border-white/70 bg-white/80 shadow-[0_18px_44px_-24px_rgba(15,23,42,0.24)]">
+      <div className="overflow-hidden rounded-[32px] border border-white/70 bg-white/80 shadow-[0_18px_44px_-24px_rgba(15,23,42,0.24)] dark:border-slate-700 dark:bg-slate-800/90 dark:shadow-[0_24px_54px_-30px_rgba(2,6,23,0.9)]">
         <div className="relative h-72 overflow-hidden">
           <img
             src={
@@ -423,20 +423,20 @@ function TripDetailPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <article className="widget-card p-5">
           <CalendarDays className="h-5 w-5 text-indigo-500" />
-          <p className="mt-4 text-sm font-medium text-slate-500">Fechas</p>
-          <p className="mt-1 text-xl font-semibold text-slate-950">
+          <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">Fechas</p>
+          <p className="mt-1 text-xl font-semibold text-slate-950 dark:text-white">
             {trip.startDate} - {trip.endDate}
           </p>
         </article>
         <article className="widget-card p-5">
           <CreditCard className="h-5 w-5 text-orange-500" />
-          <p className="mt-4 text-sm font-medium text-slate-500">Presupuesto</p>
-          <p className="mt-1 text-xl font-semibold text-slate-950">{currency(trip.budget)}</p>
+          <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">Presupuesto</p>
+          <p className="mt-1 text-xl font-semibold text-slate-950 dark:text-white">{currency(trip.budget)}</p>
         </article>
         <article className="widget-card p-5">
           <PiggyBank className="h-5 w-5 text-emerald-500" />
-          <p className="mt-4 text-sm font-medium text-slate-500">Progreso de ahorro</p>
-          <p className="mt-1 text-xl font-semibold text-slate-950">{progress}%</p>
+          <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">Progreso de ahorro</p>
+          <p className="mt-1 text-xl font-semibold text-slate-950 dark:text-white">{progress}%</p>
         </article>
       </div>
 
@@ -453,8 +453,8 @@ function TripDetailPage() {
               <div className="flex items-center gap-3">
                 <CreditCard className="h-5 w-5 text-orange-500" />
                 <div>
-                  <h3 className="text-2xl font-semibold text-slate-950">Gastos</h3>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Gastos</h3>
+                  <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
                     Control del gasto real filtrado por este viaje
                   </p>
                 </div>
@@ -463,7 +463,7 @@ function TripDetailPage() {
                 type="button"
                 onClick={() => setIsExpenseFormOpen((current) => !current)}
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 ${
-                  isExpenseFormOpen ? 'bg-orange-600 shadow-[0_18px_32px_-18px_rgba(249,115,22,0.7)]' : 'bg-slate-950 hover:bg-slate-900'
+                  isExpenseFormOpen ? 'bg-orange-600 shadow-[0_18px_32px_-18px_rgba(249,115,22,0.7)]' : 'bg-slate-950 hover:bg-slate-900 dark:bg-indigo-500 dark:hover:bg-indigo-400'
                 }`}
               >
                 <Plus className="h-4 w-4" />
@@ -471,19 +471,19 @@ function TripDetailPage() {
               </button>
             </div>
 
-            <div className="mb-4 rounded-3xl bg-slate-50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            <div className="mb-4 rounded-3xl bg-slate-50 p-4 dark:bg-slate-900/80">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                 Total gastado
               </p>
-              <p className="mt-2 text-2xl font-semibold text-slate-950">
+              <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">
                 {currency(totalExpenses)}
               </p>
             </div>
 
             <div className="space-y-3">
               {expenses.length === 0 ? (
-                <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5">
-                  <p className="text-sm text-slate-500">Todavia no hay gastos registrados.</p>
+                <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5 dark:border-slate-700 dark:bg-slate-900/80">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Todavia no hay gastos registrados.</p>
                   <button
                     type="button"
                     onClick={() => setIsExpenseFormOpen(true)}
@@ -496,13 +496,13 @@ function TripDetailPage() {
                 expenses.map((expense) => (
                   <article
                     key={expense.id}
-                    className="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-white px-4 py-3"
+                    className="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800/60"
                   >
                     <div>
-                      <span className="text-sm font-medium capitalize text-slate-700">
+                      <span className="text-sm font-medium capitalize text-slate-700 dark:text-slate-300">
                         {expense.type}
                       </span>
-                      <p className="mt-1 text-sm font-semibold text-slate-950">
+                      <p className="mt-1 text-sm font-semibold text-slate-950 dark:text-white">
                         {currency(expense.amount)}
                       </p>
                     </div>
@@ -513,14 +513,14 @@ function TripDetailPage() {
                           setEditingExpense(expense)
                           setIsExpenseFormOpen(true)
                         }}
-                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950"
+                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950 dark:border-slate-700 dark:text-slate-400 dark:hover:text-white"
                       >
                         <Pencil className="h-4 w-4" />
                       </button>
                       <button
                         type="button"
                         onClick={() => void handleExpenseDelete(expense.id)}
-                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600"
+                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600 dark:border-slate-700 dark:text-slate-400"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -536,8 +536,8 @@ function TripDetailPage() {
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-indigo-500" />
                 <div>
-                  <h3 className="text-2xl font-semibold text-slate-950">Lugares</h3>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Lugares</h3>
+                  <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
                     Lista de lugares guardados y categoria del viaje
                   </p>
                 </div>
@@ -546,7 +546,7 @@ function TripDetailPage() {
                 type="button"
                 onClick={() => setIsPlaceFormOpen((current) => !current)}
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 ${
-                  isPlaceFormOpen ? 'bg-indigo-600 shadow-[0_18px_32px_-18px_rgba(79,70,229,0.7)]' : 'bg-slate-950 hover:bg-slate-900'
+                  isPlaceFormOpen ? 'bg-indigo-600 shadow-[0_18px_32px_-18px_rgba(79,70,229,0.7)]' : 'bg-slate-950 hover:bg-slate-900 dark:bg-indigo-500 dark:hover:bg-indigo-400'
                 }`}
               >
                 <Plus className="h-4 w-4" />
@@ -556,8 +556,8 @@ function TripDetailPage() {
 
             <div className="grid gap-3 md:grid-cols-2">
               {places.length === 0 ? (
-                <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5">
-                  <p className="text-sm text-slate-500">Todavia no hay lugares registrados.</p>
+                <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5 dark:border-slate-700 dark:bg-slate-900/80">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Todavia no hay lugares registrados.</p>
                   <button
                     type="button"
                     onClick={() => setIsPlaceFormOpen(true)}
@@ -572,17 +572,17 @@ function TripDetailPage() {
                     key={place.id}
                     type="button"
                     onClick={() => setSelectedPlaceId(place.id)}
-                    className={`rounded-2xl border bg-white p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_34px_-22px_rgba(15,23,42,0.28)] ${
+                    className={`rounded-2xl border bg-white p-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_34px_-22px_rgba(15,23,42,0.28)] dark:bg-slate-800/60 dark:hover:shadow-[0_20px_34px_-24px_rgba(2,6,23,0.95)] ${
                       selectedPlaceId === place.id
-                        ? 'border-indigo-300 shadow-[0_18px_34px_-22px_rgba(79,70,229,0.35)]'
-                        : 'border-slate-200/80'
+                        ? 'border-indigo-300 shadow-[0_18px_34px_-22px_rgba(79,70,229,0.35)] dark:border-indigo-500/40'
+                        : 'border-slate-200/80 dark:border-slate-700'
                     }`}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                       {place.category}
                     </p>
-                    <h4 className="mt-2 text-lg font-semibold text-slate-950">{place.name}</h4>
-                    <p className="mt-2 text-sm text-slate-500">{place.notes || 'Sin notas.'}</p>
+                    <h4 className="mt-2 text-lg font-semibold text-slate-950 dark:text-white">{place.name}</h4>
+                    <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{place.notes || 'Sin notas.'}</p>
                     <div className="mt-4 flex items-center gap-2">
                       <button
                         type="button"
@@ -591,7 +591,7 @@ function TripDetailPage() {
                           setEditingPlace(place)
                           setIsPlaceFormOpen(true)
                         }}
-                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950"
+                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950 dark:border-slate-700 dark:text-slate-400 dark:hover:text-white"
                       >
                         <Pencil className="h-4 w-4" />
                       </button>
@@ -601,7 +601,7 @@ function TripDetailPage() {
                           event.stopPropagation()
                           void handlePlaceDelete(place.id)
                         }}
-                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600"
+                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600 dark:border-slate-700 dark:text-slate-400"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -617,8 +617,8 @@ function TripDetailPage() {
               <div className="flex items-center gap-3">
                 <StickyNote className="h-5 w-5 text-indigo-500" />
                 <div>
-                  <h3 className="text-2xl font-semibold text-slate-950">Notas</h3>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Notas</h3>
+                  <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
                     Notas del viaje y apuntes asociados a lugares
                   </p>
                 </div>
@@ -627,7 +627,7 @@ function TripDetailPage() {
                 type="button"
                 onClick={() => setIsNoteFormOpen((current) => !current)}
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 ${
-                  isNoteFormOpen ? 'bg-indigo-600 shadow-[0_18px_32px_-18px_rgba(79,70,229,0.7)]' : 'bg-slate-950 hover:bg-slate-900'
+                  isNoteFormOpen ? 'bg-indigo-600 shadow-[0_18px_32px_-18px_rgba(79,70,229,0.7)]' : 'bg-slate-950 hover:bg-slate-900 dark:bg-indigo-500 dark:hover:bg-indigo-400'
                 }`}
               >
                 <Plus className="h-4 w-4" />
@@ -637,8 +637,8 @@ function TripDetailPage() {
 
             <div className="space-y-3">
               {combinedNotes.length === 0 ? (
-                <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5">
-                  <p className="text-sm text-slate-500">Todavia no hay notas disponibles.</p>
+                <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5 dark:border-slate-700 dark:bg-slate-900/80">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Todavia no hay notas disponibles.</p>
                   <button
                     type="button"
                     onClick={() => setIsNoteFormOpen(true)}
@@ -649,9 +649,9 @@ function TripDetailPage() {
                 </div>
               ) : (
                 combinedNotes.map((note) => (
-                  <article key={note.id} className="rounded-2xl border border-slate-200/80 bg-white p-4">
-                    <p className="text-sm leading-6 text-slate-600">{note.text}</p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  <article key={note.id} className="rounded-2xl border border-slate-200/80 bg-white p-4 dark:border-slate-700 dark:bg-slate-800/60">
+                    <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{note.text}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                       {note.createdAt}
                     </p>
                     <div className="mt-4 flex items-center gap-2">
@@ -661,14 +661,14 @@ function TripDetailPage() {
                           setEditingNote(note)
                           setIsNoteFormOpen(true)
                         }}
-                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950"
+                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950 dark:border-slate-700 dark:text-slate-400 dark:hover:text-white"
                       >
                         <Pencil className="h-4 w-4" />
                       </button>
                       <button
                         type="button"
                         onClick={() => void handleNoteDelete(note.id)}
-                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600"
+                        className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600 dark:border-slate-700 dark:text-slate-400"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -682,17 +682,17 @@ function TripDetailPage() {
           <section className="soft-panel p-6">
             <div className="mb-4 flex items-center gap-3">
               <CalendarDays className="h-5 w-5 text-indigo-500" />
-              <h3 className="text-2xl font-semibold text-slate-950">Dias del viaje</h3>
+              <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Dias del viaje</h3>
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {dayCards.map((day) => (
-                <article key={day.id} className="rounded-3xl border border-slate-200/80 bg-white p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                <article key={day.id} className="rounded-3xl border border-slate-200/80 bg-white p-4 dark:border-slate-700 dark:bg-slate-800/60">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                     {day.dayLabel}
                   </p>
-                  <h4 className="mt-2 text-lg font-semibold text-slate-950">{day.placeName}</h4>
-                  <p className="mt-1 text-sm font-medium text-slate-400">{day.dateLabel}</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-500">{day.description}</p>
+                  <h4 className="mt-2 text-lg font-semibold text-slate-950 dark:text-white">{day.placeName}</h4>
+                  <p className="mt-1 text-sm font-medium text-slate-400 dark:text-slate-500">{day.dateLabel}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{day.description}</p>
                 </article>
               ))}
             </div>
@@ -701,22 +701,22 @@ function TripDetailPage() {
           <section className="soft-panel p-6">
             <div className="mb-4 flex items-center gap-3">
               <MapPin className="h-5 w-5 text-indigo-500" />
-              <h3 className="text-2xl font-semibold text-slate-950">Resumen general</h3>
+              <h3 className="text-2xl font-semibold text-slate-950 dark:text-white">Resumen general</h3>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl bg-slate-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <div className="rounded-3xl bg-slate-50 p-4 dark:bg-slate-900/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                   Gastado
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-slate-950">
+                <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">
                   {currency(totalExpenses)}
                 </p>
               </div>
-              <div className="rounded-3xl bg-slate-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <div className="rounded-3xl bg-slate-50 p-4 dark:bg-slate-900/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                   Ahorrado
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-slate-950">
+                <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">
                   {currency(totalSavings)}
                 </p>
               </div>
@@ -734,20 +734,20 @@ function TripDetailPage() {
           <section className="widget-card p-6">
             <div className="flex items-center gap-3">
               <StickyNote className="h-5 w-5 text-indigo-500" />
-              <h3 className="text-lg font-semibold text-slate-950">Estado del viaje</h3>
+              <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Estado del viaje</h3>
             </div>
             <div className="mt-5 space-y-3">
-              <div className="rounded-2xl bg-slate-50 px-4 py-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <div className="rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-900/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                   Lugares
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-slate-950">{places.length}</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{places.length}</p>
               </div>
-              <div className="rounded-2xl bg-slate-50 px-4 py-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <div className="rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-900/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                   Notas
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-slate-950">
+                <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">
                   {combinedNotes.length}
                 </p>
               </div>

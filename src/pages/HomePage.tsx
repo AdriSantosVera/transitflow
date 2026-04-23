@@ -7,6 +7,7 @@ import ItineraryTimeline, { buildItineraryItems } from '../components/ItineraryT
 import PlacesPanel from '../components/PlacesPanel'
 import RecentNotesWidget from '../components/RecentNotesWidget'
 import SavingsWidget from '../components/SavingsWidget'
+import ThemeToggle from '../components/ThemeToggle'
 import TripCard from '../components/TripCard'
 import { getExpenses } from '../api/expenses'
 import { getNotes } from '../api/notes'
@@ -133,13 +134,16 @@ function HomePage() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-semibold text-white">
-              A
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-950 dark:text-white">Adrian</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Perfil</p>
+          <div className="flex flex-col gap-4 rounded-[24px] border border-slate-200 bg-white px-4 py-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+            <ThemeToggle embedded />
+            <div className="flex items-center gap-3">
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-semibold text-white">
+                A
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-slate-950 dark:text-white">Adrián</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Perfil</p>
+              </div>
             </div>
           </div>
         </div>

@@ -3,16 +3,21 @@ import { useTheme } from '../context/ThemeContext'
 
 interface ThemeToggleProps {
   compact?: boolean
+  embedded?: boolean
 }
 
-function ThemeToggle({ compact = false }: ThemeToggleProps) {
+function ThemeToggle({ compact = false, embedded = false }: ThemeToggleProps) {
   const { isDark, toggleTheme } = useTheme()
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      className={`inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-3 py-2 text-left shadow-sm transition-all duration-300 hover:border-slate-300 hover:bg-white dark:border-slate-700 dark:bg-slate-900/90 dark:hover:border-slate-600 dark:hover:bg-slate-900 ${
+      className={`inline-flex items-center gap-3 rounded-full border px-3 py-2 text-left shadow-sm transition-all duration-300 ${
+        embedded
+          ? 'border-slate-200/80 bg-slate-50 hover:border-slate-300 hover:bg-white dark:border-slate-700 dark:bg-slate-800/90 dark:hover:border-slate-600 dark:hover:bg-slate-800'
+          : 'border-slate-200 bg-white/90 hover:border-slate-300 hover:bg-white dark:border-slate-700 dark:bg-slate-900/90 dark:hover:border-slate-600 dark:hover:bg-slate-900'
+      } ${
         compact ? 'h-10 justify-between' : 'h-12'
       }`}
       aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
@@ -39,7 +44,7 @@ function ThemeToggle({ compact = false }: ThemeToggleProps) {
         }`}
       >
         <span
-          className={`absolute left-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm transition-all duration-300 ${
+          className={`absolute left-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm transition-all duration-300 dark:bg-slate-100 ${
             isDark ? 'translate-x-5 text-indigo-500' : 'translate-x-0'
           }`}
         >

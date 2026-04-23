@@ -54,7 +54,7 @@ function PlacesPage() {
   const tripsById = useMemo(() => new Map(trips.map((trip) => [trip.id, trip])), [trips])
 
   if (loading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando lugares...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando lugares...</section>
   }
 
   if (error) {
@@ -62,7 +62,7 @@ function PlacesPage() {
   }
 
   if (placesLoading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando lugares...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando lugares...</section>
   }
 
   if (placesError) {
@@ -72,14 +72,14 @@ function PlacesPage() {
   return (
     <section className="space-y-6">
       <div className="soft-panel p-6">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Lugares</h2>
-        <p className="mt-2 text-slate-500">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Lugares</h2>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">
           Filtra por viaje y revisa los lugares guardados con sus notas asociadas.
         </p>
         <select
           value={selectedTripId}
           onChange={(event) => setSelectedTripId(event.target.value)}
-          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
         >
           <option value="">Todos los viajes</option>
           {trips.map((trip) => (

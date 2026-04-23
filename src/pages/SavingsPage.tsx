@@ -90,7 +90,7 @@ function SavingsPage() {
   }
 
   if (loading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando ahorro...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando ahorro...</section>
   }
 
   if (error) {
@@ -100,14 +100,14 @@ function SavingsPage() {
   return (
     <section className="space-y-6">
       <div className="soft-panel p-6">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Ahorro</h2>
-        <p className="mt-2 text-slate-500">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Ahorro</h2>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">
           Registra aportaciones y revisa el progreso del objetivo por viaje.
         </p>
         <select
           value={selectedTripId}
           onChange={(event) => setSelectedTripId(event.target.value)}
-          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
         >
           {trips.map((trip) => (
             <option key={trip.id} value={trip.id}>
@@ -125,11 +125,11 @@ function SavingsPage() {
             onAddClick={() => setIsSavingModalOpen(true)}
           />
           <section className="widget-card p-6">
-            <h3 className="text-lg font-semibold text-slate-950">Movimientos</h3>
-            <p className="mt-2 text-sm text-slate-400">Total acumulado: {currency(totalSaved)}</p>
+            <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Movimientos</h3>
+            <p className="mt-2 text-sm text-slate-400 dark:text-slate-500">Total acumulado: {currency(totalSaved)}</p>
             {savings.length === 0 ? (
-              <div className="mt-4 rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5">
-                <p className="text-sm text-slate-500">Todavia no hay aportaciones registradas.</p>
+              <div className="mt-4 rounded-3xl border border-dashed border-slate-200 bg-slate-50 px-5 py-5 dark:border-slate-700 dark:bg-slate-900/80">
+                <p className="text-sm text-slate-500 dark:text-slate-400">Todavia no hay aportaciones registradas.</p>
                 <button
                   type="button"
                   onClick={() => setIsSavingModalOpen(true)}
@@ -141,11 +141,11 @@ function SavingsPage() {
             ) : (
               <div className="mt-5 space-y-3">
                 {savings.map((saving) => (
-                  <article key={saving.id} className="rounded-2xl bg-slate-50 px-4 py-3">
+                  <article key={saving.id} className="rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-900/80">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <span className="text-sm text-slate-600">{saving.date}</span>
-                        <p className="mt-1 text-sm font-semibold text-slate-950">
+                        <span className="text-sm text-slate-600 dark:text-slate-400">{saving.date}</span>
+                        <p className="mt-1 text-sm font-semibold text-slate-950 dark:text-white">
                           {currency(saving.amount)}
                         </p>
                       </div>
@@ -156,14 +156,14 @@ function SavingsPage() {
                             setEditingSaving(saving)
                             setIsSavingModalOpen(true)
                           }}
-                          className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950"
+                          className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-slate-950 dark:border-slate-700 dark:text-slate-400 dark:hover:text-white"
                         >
                           <Pencil className="h-4 w-4" />
                         </button>
                         <button
                           type="button"
                           onClick={() => void handleSavingDelete(saving.id)}
-                          className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600"
+                          className="rounded-full border border-slate-200 p-2 text-slate-500 transition-colors hover:text-red-600 dark:border-slate-700 dark:text-slate-400"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>

@@ -76,20 +76,20 @@ function TripCreatePage() {
     <section className="space-y-6">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
             Nuevo plan
           </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">
             Crear viaje
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
             Define el destino, el presupuesto y las fechas clave. Al crear el viaje se guardara
             en esta app y se abrira directamente su panel de detalle.
           </p>
         </div>
         <Link
           to="/trips"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
         >
           <ArrowLeft className="h-4 w-4" />
           Volver
@@ -100,22 +100,22 @@ function TripCreatePage() {
         <form onSubmit={handleSubmit} className="soft-panel p-6 sm:p-8">
           <div className="mb-8 flex items-start justify-between gap-4">
             <div>
-              <h3 className="text-xl font-semibold text-slate-950">Datos principales</h3>
-              <p className="mt-1 text-sm text-slate-500">
+              <h3 className="text-xl font-semibold text-slate-950 dark:text-white">Datos principales</h3>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Completa lo minimo necesario para abrir el viaje y seguir editandolo despues.
               </p>
             </div>
-            <div className="hidden rounded-2xl bg-slate-50 px-4 py-3 text-right sm:block">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            <div className="hidden rounded-2xl bg-slate-50 px-4 py-3 text-right sm:block dark:bg-slate-900/80">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                 Estado
               </p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">Borrador nuevo</p>
+              <p className="mt-1 text-sm font-semibold text-slate-900 dark:text-white">Borrador nuevo</p>
             </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
             <label className="block md:col-span-2">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Nombre del viaje</span>
+              <span className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">Nombre del viaje</span>
               <input
                 type="text"
                 required
@@ -123,16 +123,16 @@ function TripCreatePage() {
                 onChange={(event) =>
                   setFormData((current) => ({ ...current, name: event.target.value }))
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
                 placeholder="Escapada a Ibiza"
               />
-              <span className="mt-2 block text-xs text-slate-400">
+              <span className="mt-2 block text-xs text-slate-400 dark:text-slate-500">
                 Usa un nombre facil de identificar en el dashboard.
               </span>
             </label>
 
             <label className="block md:col-span-2">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Destino</span>
+              <span className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">Destino</span>
               <input
                 type="text"
                 required
@@ -140,13 +140,13 @@ function TripCreatePage() {
                 onChange={(event) =>
                   setFormData((current) => ({ ...current, destination: event.target.value }))
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
                 placeholder="Ibiza, Espana"
               />
             </label>
 
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Inicio</span>
+              <span className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">Inicio</span>
               <input
                 type="date"
                 required
@@ -154,12 +154,12 @@ function TripCreatePage() {
                 onChange={(event) =>
                   setFormData((current) => ({ ...current, startDate: event.target.value }))
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
               />
             </label>
 
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Fin</span>
+              <span className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">Fin</span>
               <input
                 type="date"
                 required
@@ -167,12 +167,12 @@ function TripCreatePage() {
                 onChange={(event) =>
                   setFormData((current) => ({ ...current, endDate: event.target.value }))
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
               />
             </label>
 
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-slate-700">Presupuesto</span>
+              <span className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">Presupuesto</span>
               <input
                 type="number"
                 min="1"
@@ -182,16 +182,16 @@ function TripCreatePage() {
                 onChange={(event) =>
                   setFormData((current) => ({ ...current, budget: event.target.value }))
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
                 placeholder="1200"
               />
-              <span className="mt-2 block text-xs text-slate-400">
+              <span className="mt-2 block text-xs text-slate-400 dark:text-slate-500">
                 Introduce un importe mayor que cero.
               </span>
             </label>
 
             <label className="block">
-              <span className="mb-2 block text-sm font-medium text-slate-700">
+              <span className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
                 Imagen opcional
               </span>
               <input
@@ -200,7 +200,7 @@ function TripCreatePage() {
                 onChange={(event) =>
                   setFormData((current) => ({ ...current, image: event.target.value }))
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
                 placeholder="https://..."
               />
             </label>
@@ -209,13 +209,13 @@ function TripCreatePage() {
           {error ? <p className="mt-4 text-sm text-red-600">{error}</p> : null}
 
           <div className="mt-8 flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               El viaje se guardara en esta app y aparecera en “Mis viajes”.
             </p>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-full bg-slate-950 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded-full bg-slate-950 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-slate-900 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-indigo-500 dark:hover:bg-indigo-400"
             >
               {isSubmitting ? 'Creando...' : 'Crear viaje'}
             </button>
@@ -263,13 +263,13 @@ function TripCreatePage() {
             </div>
           </div>
 
-          <div className="mt-5 rounded-3xl bg-slate-50 p-4 text-sm text-slate-600">
+          <div className="mt-5 rounded-3xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
             <div className="flex items-start gap-3">
-              <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-white text-slate-400 shadow-sm">
+              <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-white text-slate-400 shadow-sm dark:bg-slate-800 dark:text-slate-400">
                 <ImagePlus className="h-4 w-4" />
               </span>
               <div>
-                <p className="font-medium text-slate-800">Imagen opcional</p>
+                <p className="font-medium text-slate-800 dark:text-white">Imagen opcional</p>
                 <p className="mt-1 leading-6">
                   Si anades una URL valida, el viaje aparecera con una cabecera visual desde el
                   primer momento.

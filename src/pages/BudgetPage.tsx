@@ -80,7 +80,7 @@ function BudgetPage() {
   )
 
   if (loading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando presupuesto...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando presupuesto...</section>
   }
 
   if (error) {
@@ -88,7 +88,7 @@ function BudgetPage() {
   }
 
   if (expensesLoading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando presupuesto...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando presupuesto...</section>
   }
 
   if (expensesError) {
@@ -98,14 +98,14 @@ function BudgetPage() {
   return (
     <section className="space-y-6">
       <div className="soft-panel p-6">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Presupuesto</h2>
-        <p className="mt-2 text-slate-500">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Presupuesto</h2>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">
           Analiza el reparto de gasto y el peso actual de cada categoria.
         </p>
         <select
           value={selectedTripId}
           onChange={(event) => setSelectedTripId(event.target.value)}
-          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+          className="mt-4 w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
         >
           <option value="">Todos los viajes</option>
           {trips.map((trip) => (
@@ -125,18 +125,18 @@ function BudgetPage() {
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
           <ExpensesDonutChart values={distribution} />
           <section className="widget-card p-6">
-            <h3 className="text-lg font-semibold text-slate-950">
+            <h3 className="text-lg font-semibold text-slate-950 dark:text-white">
               {selectedTrip ? `Detalle de ${selectedTrip.name}` : 'Detalle global'}
             </h3>
-            <p className="mt-2 text-sm text-slate-400">Total gastado: {currency(total)}</p>
+            <p className="mt-2 text-sm text-slate-400 dark:text-slate-500">Total gastado: {currency(total)}</p>
             <div className="mt-5 space-y-3">
               {expenses.map((expense) => (
-                <article key={expense.id} className="rounded-2xl bg-slate-50 px-4 py-3">
+                <article key={expense.id} className="rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-900/80">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-sm font-medium capitalize text-slate-700">
+                    <span className="text-sm font-medium capitalize text-slate-700 dark:text-slate-300">
                       {expense.type}
                     </span>
-                    <span className="text-sm font-semibold text-slate-950">
+                    <span className="text-sm font-semibold text-slate-950 dark:text-white">
                       {currency(expense.amount)}
                     </span>
                   </div>

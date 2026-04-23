@@ -73,7 +73,7 @@ function NotesPage() {
   }
 
   if (loading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando notas...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando notas...</section>
   }
 
   if (error) {
@@ -81,7 +81,7 @@ function NotesPage() {
   }
 
   if (notesLoading) {
-    return <section className="soft-panel p-6 text-slate-500">Cargando notas...</section>
+    return <section className="soft-panel p-6 text-slate-500 dark:text-slate-400">Cargando notas...</section>
   }
 
   if (notesError) {
@@ -91,15 +91,15 @@ function NotesPage() {
   return (
     <section className="space-y-6">
       <div className="soft-panel p-6">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Notas</h2>
-        <p className="mt-2 text-slate-500">
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Notas</h2>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">
           Resumen centralizado de notas persistidas por viaje.
         </p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <select
             value={selectedTripId}
             onChange={(event) => setSelectedTripId(event.target.value)}
-            className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+            className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
           >
             <option value="">Todos los viajes</option>
             {trips.map((trip) => (
@@ -111,7 +111,7 @@ function NotesPage() {
           <button
             type="button"
             onClick={() => setIsNoteModalOpen(true)}
-            className="rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white"
+            className="rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white dark:bg-indigo-500"
           >
             Agregar nota
           </button>

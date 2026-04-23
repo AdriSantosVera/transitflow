@@ -1,41 +1,74 @@
-# Formularios e interacción en TransitFlow
+# Formularios e interaccion en TransitFlow
 
-## Formularios controlados implementados
+## Formularios implementados
 
-Actualmente se usa un formulario simple de búsqueda en `TripsPage`:
+### Viajes
+- `TripCreatePage`: alta de viaje
+- `EditTripModal`: edicion de viaje
 
-- input controlado con `useState`
-- actualización en tiempo real del término de búsqueda
-- filtrado de resultados por origen, destino y compañía
+Campos:
+- `name`
+- `destination`
+- `startDate`
+- `endDate`
+- `budget`
+- `image` opcional
 
-## Gestión de estado de inputs
+Validaciones:
+- nombre obligatorio
+- destino obligatorio
+- presupuesto mayor que 0
+- fechas validas
 
-- `searchTerm` se actualiza con `onChange`
-- el valor del input siempre está sincronizado con el estado React
+### Gastos
+- `AddExpenseModal`
+- tambien se reutiliza para editar gastos
 
-## Validación básica
+Campos:
+- `type`
+- `amount`
 
-En esta fase, la validación es ligera:
+### Ahorro
+- `AddSavingModal`
+- tambien se reutiliza para editar ahorro
 
-- se normaliza el texto (`trim` + `toLowerCase`) para evitar falsos no-coincidencias
-- no se requiere formato estricto para buscar
+Campos:
+- `amount`
+- `date`
 
-## Mensajes de error o confirmación
+### Lugares
+- `AddPlaceModal`
+- tambien se reutiliza para editar lugares
 
-- En frontend se muestran errores de carga (`error`) cuando fallan las peticiones
-- En backend (`favorites`) se valida `id` en `POST /api/v1/favorites` y se responde `400` si falta
-- El estado visual del botón de favorito actúa como confirmación inmediata de interacción
+Campos:
+- `name`
+- `category`
+- `notes`
 
-## Interacciones clave de usuario
+### Notas
+- `AddNoteModal`
+- tambien se reutiliza para editar notas
 
-- Buscar trayectos por texto
-- Filtrar por tipo de transporte desde navegación
-- Marcar/quitar favoritos con botón corazón
+Campos:
+- `text`
 
-## Próxima mejora recomendada
+## Gestion de estado
 
-Para cubrir formularios más completos en futuras iteraciones:
+Todos los formularios son controlados con React:
+- inputs sincronizados con `useState`
+- apertura/cierre de modal con estado local
+- feedback de error por formulario
+- feedback de exito mediante toast
 
-- añadir un formulario dedicado de creación/edición de trayectos simulados
-- incluir validaciones explícitas por campo y mensajes de error por input
-- mostrar feedback de éxito más explícito (toast o mensaje inline)
+## Interaccion real
+
+Tras crear, editar o borrar:
+- la UI refresca datos desde backend
+- el estado visual se actualiza sin recargar la pagina
+- Prisma + SQLite quedan como fuente de verdad
+
+## Mejora futura razonable
+
+- validacion de backend mas estricta
+- mensajes de error por campo
+- confirmaciones visuales mas avanzadas para borrado

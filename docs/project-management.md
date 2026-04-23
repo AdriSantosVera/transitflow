@@ -1,29 +1,51 @@
-# Gestión del proyecto
+# Gestion del proyecto
 
-## Enfoque de organización
+## Enfoque de organizacion
 
-Estoy organizando el trabajo en iteraciones cortas, priorizando primero la base técnica del proyecto para poder avanzar después en funcionalidades. El objetivo es mantener un progreso visible en cada fase y reducir bloqueos.
+El trabajo se ha organizado por iteraciones cortas, priorizando primero una base tecnica estable y despues la funcionalidad real de la aplicacion.
 
-## Cómo estoy dividiendo el trabajo
+## Fases seguidas
 
-- Configuración inicial del entorno: Vite, React, TypeScript, Tailwind y React Router.
-- Definición de arquitectura: separación por carpetas en frontend y estructura base de backend.
-- Construcción del MVP: listado de trayectos, filtros básicos, estado de transporte y favoritos en LocalStorage.
-- Mejora progresiva: historial, notificaciones simuladas y ajustes de UX.
+1. Configuracion inicial del entorno:
+- Vite
+- React
+- TypeScript
+- Tailwind
+- React Router
 
-## Priorización
+2. Definicion de arquitectura:
+- separacion por carpetas en frontend
+- backend por capas con `routes`, `controllers`, `services`
 
-Primero completo funcionalidades que aportan valor directo al problema principal (consultar estado y tiempos de trayectos). Después añado funcionalidades opcionales que mejoran experiencia, pero no bloquean el uso básico.
+3. Construccion del MVP visual:
+- dashboard
+- viajes
+- favoritos
+- navegacion principal
+
+4. Conexion funcional:
+- formularios
+- detalle de viaje
+- CRUD de gastos, ahorro, lugares y notas
+
+5. Persistencia real:
+- migracion a Prisma + SQLite
+- backend como unica fuente de verdad
+
+## Priorizacion
+
+La prioridad ha sido:
+- primero que la app fuese navegable
+- despues que cada accion importante fuese real
+- finalmente que la persistencia dejara de depender de soluciones temporales
 
 ## Seguimiento
 
-Uso el tablero del repositorio para:
-
-- mantener tareas en estados (`To Do`, `In Progress`, `Done`),
-- controlar prioridades,
-- visualizar avances por fases,
-- registrar mejoras futuras.
+El tablero del proyecto sirve para:
+- mantener tareas en backlog y progreso
+- dividir trabajo funcional y tecnico
+- reflejar mejoras futuras
 
 ## Control de versiones
 
-Trabajo con commits pequeños y descriptivos para tener trazabilidad clara de los cambios. Cada bloque funcional importante queda versionado para poder revisar avances y retroceder si fuese necesario.
+Se mantiene trabajo por bloques funcionales pequeños para poder revisar cambios, detectar regresiones y documentar mejor cada fase del desarrollo.

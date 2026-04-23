@@ -1,23 +1,37 @@
-import { favoritesData } from '../data/favorites.data'
+import { prisma } from '../lib/prisma'
+import { assertNonEmptyString } from '../lib/validation'
+import { ensureTripExists } from './trip-reference.service'
 
-export function getAllFavorites(): string[] {
-  return [...favoritesData]
+export async function getAllFavorites(): Promise<string[]> {
+  const favorites = await prisma.favorite.findMany({
+    orderBy: {
+      tripId: 'asc',
+    },
+  })
+
+  return favorites.map((favorite) => favorite.tripId)
 }
 
-export function addFavorite(id: string): string[] {
-  if (!favoritesData.includes(id)) {
-    favoritesData.push(id)
-  }
+export async function addFavorite(id: string): Promise<string[]> {
+  const tripId = assertNonEmptyString(id, 'id')
+  await ensureTripExists(tripId)
 
-  return [...favoritesData]
+  await prisma.favorite.upsert({
+    where: { tripId },
+    update: {},
+    create: {
+      id: tripId,
+      tripId,
+    },
+  })
+
+  return getAllFavorites()
 }
 
-export function removeFavorite(id: string): string[] {
-  const index = favoritesData.indexOf(id)
+export async function removeFavorite(id: string): Promise<string[]> {
+  await prisma.favorite.deleteMany({
+    where: { tripId: id },
+  })
 
-  if (index !== -1) {
-    favoritesData.splice(index, 1)
-  }
-
-  return [...favoritesData]
+  return getAllFavorites()
 }

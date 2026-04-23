@@ -1,103 +1,139 @@
-# Diseño y arquitectura de TransitFlow
+# Diseno y arquitectura de TransitFlow
 
-## 1. Estructura general
+## Estructura general
 
-TransitFlow está organizado en dos capas dentro del mismo repositorio:
+TransitFlow mantiene frontend y backend en el mismo repositorio:
 
 - Frontend: React + TypeScript + Tailwind + React Router
-- Backend: Node.js + Express (API REST)
+- Backend: Node.js + Express
+- Persistencia: Prisma + SQLite
 
-La arquitectura del backend sigue separación por capas:
+La arquitectura del backend sigue separacion por capas:
 
-- `routes`: define endpoints y mapeo de rutas
-- `controllers`: recibe request/response y valida entradas básicas
-- `services`: lógica de negocio
-- `data`: datos mock y almacenamiento en memoria
-- `types`: contratos tipados
-- `config`: configuración de entorno
+- `routes`: define endpoints REST
+- `controllers`: recibe request/response
+- `services`: contiene la logica de negocio
+- `lib`: cliente Prisma y seed inicial
+- `types`: contratos tipados del backend
 
-## 2. Componentes principales y reutilización
+## Dominio actual
 
-### Frontend
+La aplicacion esta centrada en planificacion de viajes. Las entidades principales son:
 
-- `Header`: navegación principal (dashboard/sidebar responsive)
-- `TransportCard`: tarjeta reutilizable para mostrar un trayecto
-- `EmptyState`: estado vacío reutilizable
-- `TripsPage`: listado, búsqueda y filtros de transportes
-- `FavoritesPage`: listado de favoritos reutilizando `TransportCard`
+- `Trip`
+- `Place`
+- `Expense`
+- `Saving`
+- `Note`
+- `Favorite`
 
-### Backend
+## Modelo de datos
 
-- Módulo `transports`: lectura de trayectos mock
-- Módulo `favorites`: favoritos en memoria (sin base de datos)
+### `Trip`
+- `id`
+- `name`
+- `destination`
+- `startDate`
+- `endDate`
+- `budget`
+- `image?`
 
-## 3. Gestión de estado
+### `Place`
+- `id`
+- `tripId`
+- `name`
+- `category`
+- `notes`
 
-Se utiliza una combinación de estado local y estado compartido:
+### `Expense`
+- `id`
+- `tripId`
+- `type`
+- `amount`
 
-- Estado local por página/componente: búsqueda, filtros, loading/error de consultas
-- Estado global con Context API:
-  - `FavoritesContext`: ids favoritos, carga inicial y operaciones toggle
+### `Saving`
+- `id`
+- `tripId`
+- `amount`
+- `date`
 
-## 4. API REST (recursos, verbos y contratos)
+### `Note`
+- `id`
+- `tripId`
+- `text`
+- `createdAt`
+
+## Persistencia
+
+- Prisma es la capa de acceso a datos
+- SQLite es la base de datos local del proyecto
+- Hay un seed inicial que solo se ejecuta una vez y deja datos de ejemplo
+- El backend es la unica fuente de verdad
+- El frontend ya no usa `localStorage` como fuente de datos
+
+## API REST
 
 Base path: `/api/v1`
 
-### Transportes
+### Trips
+- `GET /api/v1/trips`
+- `GET /api/v1/trips/:id`
+- `POST /api/v1/trips`
+- `PUT /api/v1/trips/:id`
+- `DELETE /api/v1/trips/:id`
 
-- `GET /api/v1/transports`
-  - Respuesta: `Transport[]`
-- `GET /api/v1/transports/:id`
-  - Respuesta: `Transport`
-  - `404` si no existe
+### Places
+- `GET /api/v1/places?tripId=...`
+- `POST /api/v1/places`
+- `PUT /api/v1/places/:id`
+- `DELETE /api/v1/places/:id`
 
-### Favoritos
+### Expenses
+- `GET /api/v1/expenses?tripId=...`
+- `POST /api/v1/expenses`
+- `PUT /api/v1/expenses/:id`
+- `DELETE /api/v1/expenses/:id`
 
+### Savings
+- `GET /api/v1/savings?tripId=...`
+- `POST /api/v1/savings`
+- `PUT /api/v1/savings/:id`
+- `DELETE /api/v1/savings/:id`
+
+### Notes
+- `GET /api/v1/notes?tripId=...`
+- `POST /api/v1/notes`
+- `PUT /api/v1/notes/:id`
+- `DELETE /api/v1/notes/:id`
+
+### Favorites
 - `GET /api/v1/favorites`
-  - Respuesta: `string[]` (ids de transportes)
 - `POST /api/v1/favorites`
-  - Body: `{ "id": "train-101" }`
-  - Respuesta: `string[]` actualizado
 - `DELETE /api/v1/favorites/:id`
-  - Respuesta: `string[]` actualizado
 
-### Contrato `Transport`
+## Swagger
 
-```ts
-{
-  id: string
-  type: 'bus' | 'train' | 'flight'
-  company: string
-  origin: string
-  destination: string
-  scheduledTime: string
-  estimatedTime: string
-  status: 'on_time' | 'delayed' | 'boarding'
-  locationLabel: string
-}
-```
+La API queda documentada con Swagger UI en:
 
-## 5. Persistencia de datos
+- `/api/docs`
+- `/api/docs.json`
 
-- Persistido en servidor: actualmente no hay persistencia duradera (favoritos en memoria, se reinician al apagar backend).
-- Persistido en cliente: no se usa persistencia local para favoritos en la versión actual (se sincroniza con API en memoria).
-
-## 6. Flujo de datos (frontend ↔ API ↔ backend)
+## Flujo de datos
 
 ```mermaid
 flowchart LR
-  A["UI: TripsPage / FavoritesPage"] --> B["Hooks y Context\nuseTransports / FavoritesContext"]
-  B --> C["API client\n/api/v1/transports\n/api/v1/favorites"]
-  C --> D["Express routes"]
-  D --> E["Controllers"]
-  E --> F["Services"]
-  F --> G["Data (mock + memoria)"]
+  A["UI React"] --> B["Hooks / Context / API clients"]
+  B --> C["Express routes"]
+  C --> D["Controllers"]
+  D --> E["Services"]
+  E --> F["Prisma Client"]
+  F --> G["SQLite"]
   G --> F --> E --> D --> C --> B --> A
 ```
 
-## 7. Decisiones clave
+## Decisiones actuales
 
-- API versionada con `/api/v1` para facilitar evolución futura.
-- Tipado fuerte compartido por dominio de transportes para evitar errores de contrato.
-- Reutilización de `TransportCard` para mantener consistencia visual y reducir duplicación.
-- Separación clara de lógica de datos (hooks/context) y presentación (componentes).
+- Mantener React + Express en el mismo repo para simplificar el desarrollo
+- Usar Prisma + SQLite para persistencia real sin complicar despliegue local
+- Reutilizar un layout dashboard para no rehacer la app visualmente
+- Priorizar CRUD real y consistencia de datos sobre integraciones externas

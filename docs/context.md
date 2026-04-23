@@ -1,15 +1,13 @@
 # Context API en TransitFlow
 
-## Contexto implementado
+## Contextos implementados
 
-## `FavoritesContext`
-
+### `FavoritesContext`
 Ruta: `src/context/FavoritesContext.tsx`
 
-Se usa para compartir estado global de favoritos entre componentes y páginas.
+Se usa para compartir estado global de favoritos entre paginas y componentes.
 
 Incluye:
-
 - `favoriteIds: string[]`
 - `loading: boolean`
 - `error: string | null`
@@ -17,23 +15,33 @@ Incluye:
 - `toggleFavorite(id)`
 - `reloadFavorites()`
 
+Persistencia:
+- `FavoritesContext` se sincroniza con el backend mediante:
+  - `GET /api/v1/favorites`
+  - `POST /api/v1/favorites`
+  - `DELETE /api/v1/favorites/:id`
+
+### `ToastContext`
+Ruta: `src/context/ToastContext.tsx`
+
+Se usa para mostrar feedback visual al usuario tras acciones como:
+- crear viaje
+- editar viaje
+- borrar viaje
+- anadir o editar gastos, ahorro, lugares o notas
+
 ## Provider global
 
-`FavoritesProvider` envuelve la aplicación en `src/main.tsx`, lo que permite consumir favoritos desde cualquier componente descendiente.
+En `src/main.tsx` la app queda envuelta por:
+- `ToastProvider`
+- `FavoritesProvider`
 
-## Consumo en componentes
+Esto permite usar favoritos y toasts desde cualquier pagina o componente descendiente.
 
-- `TransportCard`: determina si un trayecto está marcado y ejecuta toggle con el botón corazón
-- `FavoritesPage`: usa `favoriteIds` para construir el listado filtrado de favoritos
+## Cuando es util Context API en este proyecto
 
-## ¿Cuándo es útil Context API en este proyecto?
+Context API evita prop drilling en estados realmente globales:
+- favoritos
+- toasts/notificaciones visuales
 
-Context API evita pasar props por múltiples niveles (`prop drilling`) para datos globales como favoritos. Al centralizar estado y acciones:
-
-- mejora mantenibilidad
-- reduce duplicación de lógica
-- mantiene consistencia de UI entre páginas
-
-## Estado actual
-
-El contexto se sincroniza con endpoints backend de favoritos (`GET/POST/DELETE`). La persistencia del backend es en memoria, por lo que los favoritos se reinician al apagar el servidor.
+La carga principal de entidades (`trips`, `places`, `expenses`, `savings`, `notes`) sigue resuelta con hooks y llamadas API, no con un store global, para mantener la arquitectura simple.

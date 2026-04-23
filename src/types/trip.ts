@@ -1,11 +1,12 @@
-export type TransportType = 'bus' | 'train' | 'flight'
-
 export interface Trip {
   id: string
-  origin: string
+  name: string
   destination: string
-  departureTime: string
-  arrivalTime: string
-  status: 'on-time' | 'delayed' | 'boarding' | 'finished'
-  type: TransportType
+  startDate: string
+  endDate: string
+  budget: number
+  image?: string
+  totalExpenses: number
+  totalSavings: number
+  progressPercentage: number
 }

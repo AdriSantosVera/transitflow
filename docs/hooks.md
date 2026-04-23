@@ -1,75 +1,52 @@
 # Hooks en TransitFlow
 
-## Hooks usados y propósito
+## Hooks usados y proposito
 
-## `useState`
+### `useState`
+Se usa para:
+- formularios
+- estados de carga
+- errores
+- listas cargadas desde API
+- estados de apertura de modales
 
-Usado para estado local de UI:
+### `useEffect`
+Se usa para:
+- cargar datos al montar una pagina
+- refrescar entidades al cambiar `tripId`
+- sincronizar valores iniciales en modales reutilizables
 
-- término de búsqueda
-- filtros
-- listas cargadas
-- loading y error
+### `useMemo`
+Se usa para:
+- calculos derivados
+- distribucion de gastos
+- mapas por `id`
+- filtrado de listas
 
-Ejemplos:
-
-- `TripsPage` (búsqueda)
-- `useTransports` (estado de carga)
-- `FavoritesContext` (lista de favoritos)
-
-## `useEffect`
-
-Usado para efectos secundarios, principalmente carga de datos al montar:
-
-- `useTransports` ejecuta petición inicial de transportes
-- `FavoritesContext` ejecuta petición inicial de favoritos
-
-## `useMemo`
-
-Usado para optimizar cálculos derivados:
-
-- filtrado de transportes por búsqueda + tipo en `TripsPage`
-- memorización del objeto de valor en `FavoritesContext`
-
-## `useCallback`
-
-Usado para mantener referencias estables en funciones:
-
-- `reloadFavorites`
-- `toggleFavorite`
-- `isFavorite`
-
-Esto evita recreaciones innecesarias y mejora estabilidad en dependencias de hooks.
+### `useCallback`
+Se usa para:
+- exponer acciones estables desde hooks y contextos
+- recargar viajes y favoritos sin recrear funciones innecesariamente
 
 ## Custom hooks
 
-## `useTransports`
-
-Ruta: `src/hooks/useTransports.ts`
-
-Responsabilidad:
-
-- cargar transportes desde API
-- exponer estados `loading`, `error`
-- exponer `reload` para recarga manual
-
-Interfaz de retorno (resumen):
-
-```ts
-{
-  transports: Transport[]
-  loading: boolean
-  error: string | null
-  reload: () => Promise<void>
-}
-```
-
-## `useLocalStorage` (existente)
-
-Ruta: `src/hooks/useLocalStorage.ts`
+### `useTrips`
+Ruta: `src/hooks/useTrips.ts`
 
 Responsabilidad:
+- cargar viajes desde `GET /api/v1/trips`
+- exponer `trips`
+- exponer estados `loading`, `error`, `status`
+- exponer `reloadTrips()` para resincronizar la UI con backend
 
-- sincronizar un estado de React con `localStorage`
+Estado expuesto:
+- `idle`
+- `loading`
+- `success`
+- `error`
 
-Nota: en la implementación actual de favoritos se usa API backend; este hook queda disponible para otros casos de persistencia cliente.
+## Como se aplican en la app
+
+- `HomePage`, `TripsPage`, `PlacesPage`, `BudgetPage`, `SavingsPage`, `NotesPage` y `FavoritesPage` consumen `useTrips`
+- Los modales usan `useState` para inputs controlados y `useEffect` para rellenar datos en edicion
+- El dashboard usa `useMemo` para evitar recalcular estructuras derivadas en cada render

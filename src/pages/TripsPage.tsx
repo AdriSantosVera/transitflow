@@ -1,121 +1,93 @@
+import { Search } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import EmptyState from '../components/EmptyState'
-import TransportCard from '../components/TransportCard'
-import { useTransports } from '../hooks/useTransports'
-type SectionKey = 'all' | 'bus' | 'train' | 'metro' | 'flight'
-
-const validTypes: SectionKey[] = ['all', 'bus', 'train', 'metro', 'flight']
-
-const sectionText: Record<SectionKey, { title: string; subtitle: string }> = {
-  all: {
-    title: 'Todos los trayectos',
-    subtitle: 'Vista completa de salidas disponibles en tiempo real simulado.',
-  },
-  bus: {
-    title: 'Trayectos de Bus',
-    subtitle: 'Consulta rutas urbanas e interurbanas con su estado actual.',
-  },
-  train: {
-    title: 'Trayectos de Tren',
-    subtitle: 'Revisa salidas ferroviarias y cambios de andén rápidamente.',
-  },
-  metro: {
-    title: 'Trayectos de Metro',
-    subtitle: 'Consulta salidas de metro y tiempo estimado de paso.',
-  },
-  flight: {
-    title: 'Trayectos de Avión',
-    subtitle: 'Visualiza puertas, estado de embarque y horarios estimados.',
-  },
-}
+import TripCard from '../components/TripCard'
+import { useTrips } from '../hooks/useTrips'
 
 function TripsPage() {
-  const [searchParams] = useSearchParams()
   const [searchTerm, setSearchTerm] = useState('')
+  const { trips, loading, error } = useTrips()
 
-  const typeParam = searchParams.get('type') ?? 'all'
-  const section: SectionKey = validTypes.includes(typeParam as SectionKey)
-    ? (typeParam as SectionKey)
-    : 'all'
-  const { transports, loading, error } = useTransports(section)
-
-  const filteredTransports = useMemo(() => {
+  const filteredTrips = useMemo(() => {
     const query = searchTerm.trim().toLowerCase()
 
-    return transports.filter((transport) => {
+    return trips.filter((trip) => {
       const matchSearch =
         query.length === 0 ||
-        transport.origin.toLowerCase().includes(query) ||
-        transport.destination.toLowerCase().includes(query) ||
-        transport.company.toLowerCase().includes(query)
+        trip.name.toLowerCase().includes(query) ||
+        trip.destination.toLowerCase().includes(query) ||
+        String(trip.budget).includes(query)
 
       return matchSearch
     })
-  }, [searchTerm, transports])
+  }, [searchTerm, trips])
 
   if (loading) {
     return (
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-2 text-2xl font-semibold">Listado de trayectos</h2>
-        <p className="text-slate-600">Cargando transportes...</p>
+      <section className="soft-panel p-6">
+        <h2 className="mb-2 text-2xl font-semibold text-slate-950">Listado de viajes</h2>
+        <p className="text-slate-500">Cargando planes guardados...</p>
       </section>
     )
   }
 
   if (error) {
     return (
-      <section className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm">
-        <h2 className="mb-2 text-2xl font-semibold text-red-900">
-          Listado de trayectos
-        </h2>
-        <p className="text-red-700">Error al cargar transportes: {error}</p>
+      <section className="soft-panel border-red-100 bg-red-50/80 p-6">
+        <h2 className="mb-2 text-2xl font-semibold text-red-900">Listado de viajes</h2>
+        <p className="text-red-700">Error al cargar viajes: {error}</p>
       </section>
     )
   }
 
-  if (transports.length === 0) {
+  if (trips.length === 0) {
     return (
       <EmptyState
-        title="Sin trayectos disponibles"
-        description="No hay datos de transporte para mostrar en este momento."
+        title="Sin viajes disponibles"
+        description="Todavia no hay planes creados en el sistema."
       />
     )
   }
 
   return (
-    <section className="space-y-5">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-2 text-3xl font-bold tracking-tight text-slate-900">
-          {sectionText[section].title}
-        </h2>
-        <p className="text-slate-600">{sectionText[section].subtitle}</p>
+    <section className="space-y-6">
+      <div className="soft-panel p-6 sm:p-7">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-sm font-medium text-slate-500">Biblioteca de viajes</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+              Mis viajes
+            </h2>
+            <p className="mt-2 max-w-2xl text-slate-500">
+              Revisa destinos, presupuesto previsto y el avance de ahorro en una vista clara.
+            </p>
+          </div>
 
-        <div className="mt-5">
-          <label className="block">
-            <span className="mb-1.5 block text-sm font-medium text-slate-700">
-              Buscar trayecto
+          <label className="block w-full max-w-md">
+            <span className="mb-2 block text-sm font-medium text-slate-700">Buscar viaje</span>
+            <span className="relative block">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder="Ej. Ibiza, Paris, 1200..."
+                className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm text-slate-900 outline-none transition-all duration-300 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
+              />
             </span>
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Ej. Madrid, Barcelona, Renfe..."
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-slate-300 focus:bg-white focus:ring-2 focus:ring-slate-100"
-            />
           </label>
         </div>
       </div>
 
-      {filteredTransports.length === 0 ? (
+      {filteredTrips.length === 0 ? (
         <EmptyState
           title="No hay resultados"
-          description="Prueba cambiando el texto de búsqueda o el filtro de tipo."
+          description="Prueba con otro destino, nombre de viaje o presupuesto."
         />
       ) : (
-        <div className="grid gap-4 lg:grid-cols-2">
-          {filteredTransports.map((transport) => (
-            <TransportCard key={transport.id} transport={transport} />
+        <div className="grid gap-5 xl:grid-cols-2">
+          {filteredTrips.map((trip) => (
+            <TripCard key={trip.id} trip={trip} />
           ))}
         </div>
       )}

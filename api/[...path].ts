@@ -1,3 +1,3 @@
-import app from '../server/src/app'
+import handleAppRequest from './_handler'
 
-export default app
+export default handleAppRequest

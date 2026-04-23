@@ -1,93 +1,105 @@
 # Componentes de TransitFlow
 
-## Componentes reutilizables principales
+## Layout y navegacion
 
-## `Header`
-
+### `Header`
 Ruta: `src/components/Header.tsx`
 
 Responsabilidad:
+- sidebar de escritorio
+- header compacto en movil
+- navegacion principal
+- acceso directo a crear viaje
 
-- Mostrar branding de la app
-- Navegación por secciones (`Todos`, `Bus`, `Tren`, `Avión`, `Favoritos`)
-- Adaptación responsive (sidebar en escritorio, navegación compacta en móvil)
-
-Props:
-
-- No recibe props (se apoya en `useLocation` y links de React Router)
-
-## `TransportCard`
-
-Ruta: `src/components/TransportCard.tsx`
-
-Responsabilidad:
-
-- Mostrar un trayecto con diseño consistente y moderno
-- Mostrar datos clave: tipo, compañía, ruta, horas, estado, referencia
-- Permitir marcar/quitar favorito
-
-Props tipadas:
-
-```ts
-interface TransportCardProps {
-  transport: Transport
-}
-```
-
-## `EmptyState`
-
+### `EmptyState`
 Ruta: `src/components/EmptyState.tsx`
 
 Responsabilidad:
+- mostrar estados vacios, sin resultados o sin contenido
 
-- Mostrar un estado vacío reutilizable en distintas páginas
+### `Modal`
+Ruta: `src/components/Modal.tsx`
 
-Props tipadas:
+Responsabilidad:
+- base reutilizable para formularios modales
 
-```ts
-interface EmptyStateProps {
-  title: string
-  description: string
-}
-```
+## Tarjetas y widgets
 
-## Páginas (composición)
+### `TripCard`
+Ruta: `src/components/TripCard.tsx`
 
-## `TripsPage`
+Responsabilidad:
+- mostrar un viaje con imagen, fechas, presupuesto y progreso
+- navegar al detalle del viaje
+- marcar o quitar favorito
 
-Ruta: `src/pages/TripsPage.tsx`
+### `DashboardMetricCard`
+Ruta: `src/components/DashboardMetricCard.tsx`
 
-Compone:
+Responsabilidad:
+- mostrar metricas superiores del dashboard
 
-- Buscador controlado
-- Filtro por sección (vía query param)
-- Listado de `TransportCard`
-- `EmptyState` para resultados vacíos
+### `SavingsWidget`
+Ruta: `src/components/SavingsWidget.tsx`
 
-## `FavoritesPage`
+Responsabilidad:
+- mostrar progreso del ahorro frente al presupuesto
+- lanzar accion para anadir ahorro
 
-Ruta: `src/pages/FavoritesPage.tsx`
+### `ExpensesDonutChart`
+Ruta: `src/components/ExpensesDonutChart.tsx`
 
-Compone:
+Responsabilidad:
+- mostrar distribucion de gastos por categoria
 
-- Datos de `useTransports`
-- Estado global de favoritos desde `FavoritesContext`
-- Reutiliza `TransportCard`
-- `EmptyState` cuando no hay favoritos
+### `ItineraryTimeline`
+Ruta: `src/components/ItineraryTimeline.tsx`
 
-## `HomePage`
+Responsabilidad:
+- representar hitos del itinerario de forma visual
 
-Ruta: `src/pages/HomePage.tsx`
+### `PlacesPanel`
+Ruta: `src/components/PlacesPanel.tsx`
 
-Compone:
+Responsabilidad:
+- listar lugares destacados por viaje
 
-- Sección de bienvenida
-- Accesos rápidos a Trayectos y Favoritos
+### `RecentNotesWidget`
+Ruta: `src/components/RecentNotesWidget.tsx`
 
-## Criterio de reutilización aplicado
+Responsabilidad:
+- mostrar notas recientes en dashboard y vistas relacionadas
 
-Se separó presentación de datos para reutilizar UI:
+## Formularios reutilizables
 
-- `TransportCard` se usa en `TripsPage` y `FavoritesPage`
-- `EmptyState` se usa en páginas con estado vacío
-- `Header` centraliza la navegación global
+### `AddExpenseModal`
+### `AddSavingModal`
+### `AddPlaceModal`
+### `AddNoteModal`
+### `EditTripModal`
+
+Responsabilidad:
+- crear o editar entidades sin cambiar el diseño principal
+- validar datos de entrada
+- lanzar acciones conectadas a la API
+
+## Paginas principales
+
+- `HomePage`: dashboard principal
+- `TripsPage`: listado y busqueda de viajes
+- `TripCreatePage`: alta de viaje
+- `TripDetailPage`: detalle completo del viaje
+- `PlacesPage`: vista global de lugares
+- `BudgetPage`: vista global de gastos
+- `SavingsPage`: vista global de ahorro
+- `NotesPage`: vista global de notas
+- `FavoritesPage`: favoritos
+- `SettingsPage`: ajustes
+- `NotFoundPage`: fallback de routing
+
+## Reutilizacion
+
+- `TripCard` se reutiliza en dashboard, viajes y favoritos
+- `EmptyState` se reutiliza en multiples pantallas
+- Los modales de alta tambien se reutilizan para edicion
+- `Header` centraliza navegacion y layout lateral

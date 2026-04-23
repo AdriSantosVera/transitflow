@@ -1,59 +1,61 @@
 import EmptyState from '../components/EmptyState'
-import TransportCard from '../components/TransportCard'
+import TripCard from '../components/TripCard'
 import { useFavorites } from '../context/FavoritesContext'
-import { useTransports } from '../hooks/useTransports'
+import { useTrips } from '../hooks/useTrips'
 
 function FavoritesPage() {
-  const { transports, loading: loadingTransports, error: transportsError } =
-    useTransports()
+  const { trips, loading: loadingTrips, error: tripsError } = useTrips()
   const { favoriteIds, loading: loadingFavorites, error: favoritesError } =
     useFavorites()
 
-  if (loadingTransports || loadingFavorites) {
+  if (loadingTrips || loadingFavorites) {
     return (
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-2 text-2xl font-semibold">Mis favoritos</h2>
-        <p className="text-slate-600">Cargando favoritos...</p>
+      <section className="soft-panel p-6">
+        <h2 className="mb-2 text-2xl font-semibold text-slate-950">Mis favoritos</h2>
+        <p className="text-slate-500">Cargando favoritos...</p>
       </section>
     )
   }
 
-  if (transportsError || favoritesError) {
+  if (tripsError || favoritesError) {
     return (
-      <section className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm">
+      <section className="soft-panel border-red-100 bg-red-50/80 p-6">
         <h2 className="mb-2 text-2xl font-semibold text-red-900">Mis favoritos</h2>
         <p className="text-red-700">
-          Error: {transportsError ?? favoritesError ?? 'Error desconocido'}
+          Error: {tripsError ?? favoritesError ?? 'Error desconocido'}
         </p>
       </section>
     )
   }
 
-  const favoriteTransports = transports.filter((transport) =>
-    favoriteIds.includes(transport.id),
+  const favoriteTrips = trips.filter((trip) =>
+    favoriteIds.includes(trip.id),
   )
 
-  if (favoriteTransports.length === 0) {
+  if (favoriteTrips.length === 0) {
     return (
       <EmptyState
         title="Sin favoritos"
-        description="Aún no has guardado trayectos. Marca el corazón en la pantalla de Trayectos."
+        description="Aun no has guardado viajes. Marca el corazon en la pantalla principal."
       />
     )
   }
 
   return (
-    <section className="space-y-4">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-2 text-2xl font-semibold">Mis favoritos</h2>
-        <p className="text-slate-600">
-          Aquí tienes tus trayectos guardados para acceso rápido.
+    <section className="space-y-6">
+      <div className="soft-panel p-6 sm:p-7">
+        <p className="text-sm font-medium text-slate-500">Acceso rapido</p>
+        <h2 className="mb-2 mt-2 text-3xl font-semibold tracking-tight text-slate-950">
+          Favoritos
+        </h2>
+        <p className="max-w-2xl text-slate-500">
+          Aqui tienes los viajes que has marcado para volver rapido a cada plan.
         </p>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        {favoriteTransports.map((transport) => (
-          <TransportCard key={transport.id} transport={transport} />
+      <div className="grid gap-5 xl:grid-cols-2">
+        {favoriteTrips.map((trip) => (
+          <TripCard key={trip.id} trip={trip} />
         ))}
       </div>
     </section>

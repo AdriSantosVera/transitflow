@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Trip {
+  id          String    @id
+  name        String
+  destination String
+  startDate   String
+  endDate     String
+  budget      Float
+  image       String?
+  places      Place[]
+  expenses    Expense[]
+  savings     Saving[]
+  notes       Note[]
+  favorite    Favorite?
+}
+
+model Place {
+  id       String @id
+  tripId   String
+  name     String
+  category String
+  notes    String
+  trip     Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+model Expense {
+  id     String      @id
+  tripId String
+  type   ExpenseType
+  amount Float
+  trip   Trip        @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+model Saving {
+  id     String @id
+  tripId String
+  amount Float
+  date   String
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+model Favorite {
+  id     String @id
+  tripId String @unique
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+model AppState {
+  id       String @id
+  seededAt String
+}
+
+model Note {
+  id        String @id
+  tripId    String
+  text      String
+  createdAt String
+  trip      Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+enum ExpenseType {
+  transporte
+  comida
+  alojamiento
+  ocio
+}

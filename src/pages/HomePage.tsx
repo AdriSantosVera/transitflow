@@ -135,7 +135,6 @@ function HomePage() {
 
         <div className="flex items-center gap-3">
           <div className="flex flex-col gap-4 rounded-[24px] border border-slate-200 bg-white px-4 py-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-            <ThemeToggle embedded />
             <div className="flex items-center gap-3">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-semibold text-white">
                 A
@@ -144,6 +143,9 @@ function HomePage() {
                 <p className="text-sm font-semibold text-slate-950 dark:text-white">Adrián</p>
                 <p className="text-xs uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Perfil</p>
               </div>
+            </div>
+            <div className="flex justify-start">
+              <ThemeToggle embedded />
             </div>
           </div>
         </div>

@@ -7,7 +7,6 @@ import ItineraryTimeline, { buildItineraryItems } from '../components/ItineraryT
 import PlacesPanel from '../components/PlacesPanel'
 import RecentNotesWidget from '../components/RecentNotesWidget'
 import SavingsWidget from '../components/SavingsWidget'
-import ThemeToggle from '../components/ThemeToggle'
 import TripCard from '../components/TripCard'
 import { getExpenses } from '../api/expenses'
 import { getNotes } from '../api/notes'
@@ -143,9 +142,6 @@ function HomePage() {
                 <p className="text-sm font-semibold text-slate-950 dark:text-white">Adrián</p>
                 <p className="text-xs uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Perfil</p>
               </div>
-            </div>
-            <div className="flex justify-start">
-              <ThemeToggle embedded />
             </div>
           </div>
         </div>
